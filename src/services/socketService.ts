@@ -1,4 +1,5 @@
-const socket = new WebSocket('wss://ws.finnhub.io?token=ct7lr6hr01qkgg0uqem0ct7lr6hr01qkgg0uqemg');
+const apiToken = process.env.REACT_APP_FINNHUB_API_TOKEN;
+const socket = new WebSocket(`wss://ws.finnhub.io?token=${apiToken}`);
 
 // Subscribe to a stock symbol
 export const subscribeToStock = (symbol: string) => {
