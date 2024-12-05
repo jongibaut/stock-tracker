@@ -9,7 +9,8 @@ const App: React.FC = () => {
   const [stockData, setStockData] = useState(JSON.parse(localStorage.getItem('stockData') || '{}'));
 
   useEffect(() => {
-    const socket = new WebSocket('wss://ws.finnhub.io?token=ct7lr6hr01qkgg0uqem0ct7lr6hr01qkgg0uqemg');
+    const apiToken = process.env.REACT_APP_FINNHUB_API_TOKEN;
+    const socket = new WebSocket(`wss://ws.finnhub.io?token=${apiToken}`);
     socket.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
